@@ -122,8 +122,6 @@ body {
   border-right: 4px solid #faf6ed;
 }
 
-
-
 .animais-lista {
   height: 500px;
   overflow-y: scroll;
@@ -167,6 +165,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   color: #e54;
+  cursor: pointer;
 }
 .faq-lista dt::before {
   content: "";
@@ -265,5 +264,34 @@ body {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+/* ###################################### ACCORDION ################################################  */
+
+.js-accordion dt.ativo::after {
+  content: "↑";
+  margin-left: 10px;
+}
+
+.js-accordion dt::after {
+  content: "↓";
+}
+
+.js .js-accordion dd {
+  display: none;
+}
+.js-accordion dd.ativo {
+  display: block;
+  animation: showDownText 1s forwards;
+}
+
+@keyframes showDownText {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
   }
 }

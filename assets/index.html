@@ -99,15 +99,15 @@
 
   <section class="grid-section faq" id="faq">
     <h1 class="titulo">Faq</h1>
-    <dl class="faq-lista">
+    <dl class="faq-lista js-accordion">
       <dt>Lorem ipsum dolor, sit?</dt>
-      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti?</dd>
+      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat magnam molestiae in rerum enim repellat voluptatibus impedit, distinctio sunt quaerat.</dd>
       <dt>Lorem ipsum dolor, sit?</dt>
-      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti?</dd>
+      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti? Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid iste omnis obcaecati.</dd>
       <dt>Lorem ipsum dolor, sit?</dt>
-      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti?</dd>
+      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique eaque nobis quo possimus!</dd>
       <dt>Lorem ipsum dolor, sit?</dt>
-      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti?</dd>
+      <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, deleniti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit quod quam qui ducimus illo soluta veritatis, voluptatum omnis debitis dolore.</dd>
     </dl>
   </section>
   <section class="grid-section contato" id="contato">
@@ -129,28 +129,51 @@
   <script>
 
     // ########################################### FUNÇÃO OFICIAL #################################################### 
-    const tabMenu = document.querySelectorAll('.js-tabMenu li')
-    const tabContent = document.querySelectorAll('.js-tabContent section')
-    tabContent[0].classList.add('ativo')
 
-    if (tabMenu.length && tabContent.length) {
-      function ativeTab(index) {
-        tabContent.forEach((section) => {
-          section.classList.remove('ativo')
+    function initTabMenu() {
+
+      const tabMenu = document.querySelectorAll('.js-tabMenu li')
+      const tabContent = document.querySelectorAll('.js-tabContent section')
+      tabContent[0].classList.add('ativo')
+
+      if (tabMenu.length && tabContent.length) {
+        function ativeTab(index) {
+          tabContent.forEach((section) => {
+            section.classList.remove('ativo')
+          })
+          tabContent[index].classList.add('ativo')
+        }
+
+        tabMenu.forEach((itemMenu, index) => {
+          itemMenu.addEventListener('click', () => {
+            ativeTab(index)
+          })
         })
-        tabContent[index].classList.add('ativo')
+
       }
-
-      tabMenu.forEach((itemMenu, index) => {
-        itemMenu.addEventListener('click', () => {
-          ativeTab(index)
-        })
-      })
-
     }
+    initTabMenu()
 
 
-// ############################################################################################### 
+    // ############################################  Acordeon list ################################################### 
+
+    function initAccordion() {
+      const accordionList = document.querySelectorAll('.js-accordion dt')
+      const ativado = 'ativo'
+      if (accordionList.length) {
+        accordionList[0].classList.add(ativado)
+        accordionList[0].nextElementSibling.classList.add(ativado)
+        function ativarClasseAoClick() {
+          this.classList.toggle(ativado)
+          this.nextElementSibling.classList.toggle(ativado)
+        }
+        accordionList.forEach((item) => {
+          item.addEventListener('click', ativarClasseAoClick)
+        })
+      }
+    }
+    initAccordion()
+
 
 
 
