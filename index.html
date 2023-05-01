@@ -5,7 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <script> document.documentElement.className += ' js'</script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <nav class="menu">
+  <nav class="menu js-menu">
     <ul>
       <li><a href="#animais">Animais</a></li>
       <li><a href="#faq">Faq</a></li>
@@ -27,22 +27,22 @@
     </h1>
     <ul class="animais-lista js-tabMenu">
       <li>
-        <img src="./img/imagem1.jpg">
+        <img src="./assets/img/imagem1.jpg">
       </li>
       <li>
-        <img src="./img/imagem2.jpg">
+        <img src="./assets/img/imagem2.jpg">
       </li>
       <li>
-        <img src="./img/imagem3.jpg">
+        <img src="./assets/img/imagem3.jpg">
       </li>
       <li>
-        <img src="./img/imagem4.jpg">
+        <img src="./assets/img/imagem4.jpg">
       </li>
       <li>
-        <img src="./img/imagem5.jpg">
+        <img src="./assets/img/imagem5.jpg">
       </li>
       <li>
-        <img src="./img/imagem6.jpg">
+        <img src="./assets/img/imagem6.jpg">
       </li>
     </ul>
 
@@ -112,7 +112,7 @@
   </section>
   <section class="grid-section contato" id="contato">
     <div class="mapa">
-      <img src="./img/mapa.png">
+      <img src="./assets/img/mapa.png">
     </div>
     <ul class="dados">
       <h1 class="titulo">Contato</h1>
@@ -126,59 +126,7 @@
   <footer class="copy">
     <p>Todos os direitos reservados &copy;</p>
   </footer>
-  <script>
-
-    // ########################################### FUNÇÃO OFICIAL #################################################### 
-
-    function initTabMenu() {
-
-      const tabMenu = document.querySelectorAll('.js-tabMenu li')
-      const tabContent = document.querySelectorAll('.js-tabContent section')
-      tabContent[0].classList.add('ativo')
-
-      if (tabMenu.length && tabContent.length) {
-        function ativeTab(index) {
-          tabContent.forEach((section) => {
-            section.classList.remove('ativo')
-          })
-          tabContent[index].classList.add('ativo')
-        }
-
-        tabMenu.forEach((itemMenu, index) => {
-          itemMenu.addEventListener('click', () => {
-            ativeTab(index)
-          })
-        })
-
-      }
-    }
-    initTabMenu()
-
-
-    // ############################################  Acordeon list ################################################### 
-
-    function initAccordion() {
-      const accordionList = document.querySelectorAll('.js-accordion dt')
-      const ativado = 'ativo'
-      if (accordionList.length) {
-        accordionList[0].classList.add(ativado)
-        accordionList[0].nextElementSibling.classList.add(ativado)
-        function ativarClasseAoClick() {
-          this.classList.toggle(ativado)
-          this.nextElementSibling.classList.toggle(ativado)
-        }
-        accordionList.forEach((item) => {
-          item.addEventListener('click', ativarClasseAoClick)
-        })
-      }
-    }
-    initAccordion()
-
-
-
-
-
-  </script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
