@@ -61,3 +61,26 @@ function InitIscrollSmooth() {
   });
 }
 InitIscrollSmooth();
+// ############################################  ScrollAnimation ###################################################
+
+function initAnimationScroll() {
+  const sections = document.querySelectorAll(".js-scroll");
+  if (sections.length) {
+    const windowMetade = window.innerHeight * 0.6;
+    function animaScroll() {
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const isVisibleSection = sectionTop - windowMetade < 0;
+        if (isVisibleSection) {
+          section.classList.add("animation");
+        } else {
+          section.classList.remove("animation");
+        }
+      });
+    }
+    animaScroll();
+
+    window.addEventListener("scroll", animaScroll);
+  }
+}
+initAnimationScroll();
